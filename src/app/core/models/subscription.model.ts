@@ -7,7 +7,7 @@ export class Subscription extends ResourceModel<Subscription> {
   startDate?:Date;
   endDate?:Date;
   price?:Date;
-  typeSubscription?:TypeSubscription;
+  typeSub?:TypeSubscription;
 
   constructor(model?: Partial<Subscription>) {
     super(model);

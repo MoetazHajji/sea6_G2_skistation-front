@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Subscription} from "../../models/subscription.model";
 import {SubscriptionApi} from "../../api/subscription/subsciption.api";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,11 @@ export class SubscriptionService {
     return this.subscriptionApi.searchSubscriptionById(id);
   }
 
-  findAllSubscriptions(params?:any){
-    return this.subscriptionApi.findAll(params);
+  findAllSubscriptions(params:any):Observable<any>{
+    return this.subscriptionApi.getAll(params);
   }
 
-  removeSubscription(id : string){
-    return this.subscriptionApi.removeSubscription(id);
-  }
+  // removeSubscription(id : string){
+  //   return this.subscriptionApi.removeSubscription(id);
+  // }
 }
