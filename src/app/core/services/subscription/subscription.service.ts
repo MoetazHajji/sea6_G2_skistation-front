@@ -28,7 +28,7 @@ export class SubscriptionService {
     return this.subscriptionApi.getAll(params);
   }
 
-  // removeSubscription(id : string){
-  //   return this.subscriptionApi.removeSubscription(id);
-  // }
+  removeSubscription(id : any){
+    return this.subscriptionApi.removeSubscription(id);
+  }
 }

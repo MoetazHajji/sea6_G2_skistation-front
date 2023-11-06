@@ -17,6 +17,7 @@ export class SubscriptionApi extends ResourceService<Subscription>{
   public subscriptionGetOneUrl='subscription/get'
   public subscriptionAllUrl='subscription/all/'
   public subscriptionUpdateUrl='subscription/update'
+  public subscriptionDeleteUrl='subscription/delete/'
 
   constructor(
     private http:HttpClient
@@ -41,10 +42,9 @@ export class SubscriptionApi extends ResourceService<Subscription>{
     return this.getById(id);
   }
 
-  // public removeSubscription(id: string): Observable<any> {
-  //   this.apiURL = this.subscriptionUrl ;
-  //   return this.delete(id);
-  // }
+  public removeSubscription(id: any): Observable<any> {
+    return this.http.delete(`${this.url}${this.subscriptionDeleteUrl}${id}` , {observe : 'response'});
+  }
 
   getAll(typeSub:string) {
     return this.http.get(`${this.url}${this.subscriptionAllUrl}${typeSub}` , {observe : 'response'});

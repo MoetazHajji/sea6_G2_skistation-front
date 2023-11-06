@@ -13,10 +13,15 @@
     </p-toolbar>
 
 
-    <app-add-subscription *ngIf="addNewSubscriptionModal" [modalNewSubscription]="addNewSubscriptionModal" (closeModalNewSubscription)="hideDialog()"></app-add-subscription>
-<!--    <app-edit-stock *ngIf="editStockModal" [modalEditStock]="editStockModal"-->
-<!--                    [StockId]="getStockId"-->
-<!--                    (closeModalEditStock)="hideDialog()"></app-edit-stock>-->
+    <app-add-subscription
+      *ngIf="addNewSubscriptionModal"
+      [modalNewSubscription]="addNewSubscriptionModal"
+      (closeModalNewSubscription)="hideDialog()"></app-add-subscription>
+    <app-edit-subscription
+      *ngIf="editSubscriptionModal"
+      [modalEditSubscription]="editSubscriptionModal"
+      [SubId]="getSubId"
+      (closeModalEditSubscription)="hideDialog()"></app-edit-subscription>
 
     <p-table
       #dt
@@ -69,8 +74,8 @@
             <p-tag [value]="subscription.typeSub" [severity]="getSeverity(subscription.typeSub)"></p-tag>
           </td>
           <td>
-            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-button-outlined"></button>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined"></button>
+            <button pButton pRipple icon="pi pi-pencil" (click)="EditSubscription(subscription.numSub)" class="p-button-rounded p-button-success p-button-outlined"></button>
+            <button pButton pRipple icon="pi pi-trash" (click)="deleteSubscription(subscription)" class="p-button-rounded p-button-danger p-button-outlined"></button>
           </td>
         </tr>
       </ng-template>
