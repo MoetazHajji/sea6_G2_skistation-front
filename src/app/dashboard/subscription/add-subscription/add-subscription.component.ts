@@ -46,11 +46,13 @@ export class AddSubscriptionComponent implements OnInit {
 
   addNewSubscription(){
     this.subscription = this.subscriptionForm.value;
-    console.log(this.subscription)
     this.subscriptionService.createSubscription(this.subscription).subscribe(res =>{
       this.modalNewSubscription=false;
       this.subscriptionForm.reset();
       this.closeModalNewSubscription.emit(this.modalNewSubscription);
+      this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Subscription Added', life: 3000 });
+    }, error => {
+      this.messageService.add({ severity: 'error', summary: 'Failed', detail: 'Add Failed', life: 3000 });
     })
   }
 

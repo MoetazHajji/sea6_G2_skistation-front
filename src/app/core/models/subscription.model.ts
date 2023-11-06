@@ -3,7 +3,7 @@ import {TypeSubscription} from "./constant/TypeSubscription.model";
 
 export class Subscription extends ResourceModel<Subscription> {
 
-  numSub?:string;
+  numSub?:any;
   startDate?:Date;
   endDate?:Date;
   price?:Date;

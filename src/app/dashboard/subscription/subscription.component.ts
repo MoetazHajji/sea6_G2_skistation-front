@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Subscription} from "../../core/models/subscription.model";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {SubscriptionService} from "../../core/services/subscription/subscription.service";
@@ -15,6 +15,9 @@ export class SubscriptionComponent implements OnInit,AfterViewInit {
   subscriptionList:Subscription[] = [];
   subscription!:Subscription;
   addNewSubscriptionModal:boolean=false;
+  editSubscriptionModal:boolean=false;
+  @Input() getSubId : any
+
   selectedTypeSub:any;
   typeSubscription:any
 
@@ -73,6 +76,20 @@ export class SubscriptionComponent implements OnInit,AfterViewInit {
     }
   }
 
+  deleteSubscription(sub: Subscription) {
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete subscription :' + sub.numSub + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.subscriptionService.removeSubscription(sub.numSub).subscribe(res => {
+          this.subscriptionList.splice(sub.numSub, 1);
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Subscription Deleted', life: 3000 });
+        })
+      }
+    });
+  }
+
   getSeverity(status: string) : any {
     switch (status) {
       case 'ANNUAL':
@@ -80,7 +97,7 @@ export class SubscriptionComponent implements OnInit,AfterViewInit {
       case 'MONTHLY':
         return 'warning';
       case 'SEMESTRIEL':
-        return 'success';
+        return 'danger';
     }
   }
 
@@ -90,6 +107,11 @@ export class SubscriptionComponent implements OnInit,AfterViewInit {
 
   hideDialog() {
     this.addNewSubscriptionModal = false;
+  }
+
+  EditSubscription(event: any){
+    this.getSubId = event
+    this.editSubscriptionModal = !this.editSubscriptionModal;
   }
 
 }
