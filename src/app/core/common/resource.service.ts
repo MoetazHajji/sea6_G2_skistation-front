@@ -6,8 +6,8 @@ import {environment} from "../../../environments/environment";
 
 export abstract class ResourceService<T extends ResourceModel<T>> {
 
-    protected backendBaseUrl = `${environment.apiUrl}`;
-    protected apiURL: string = "";
+     backendBaseUrl = `${environment.apiUrl}`;
+     apiURL: string = "";
 
     protected constructor(
         private httpClient: HttpClient,
