@@ -22,6 +22,8 @@ import {DialogModule} from "primeng/dialog";
 import {CalendarModule} from "primeng/calendar";
 import { AddSubscriptionComponent } from './subscription/add-subscription/add-subscription.component';
 import { EditSubscriptionComponent } from './subscription/edit-subscription/edit-subscription.component';
+import { AllPisteComponent } from './piste/all-piste/all-piste.component';
+import { AddPisteComponent } from './piste/add-piste/add-piste.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { EditSubscriptionComponent } from './subscription/edit-subscription/edit
        AdminLayoutComponent,
        SubscriptionComponent,
        AddSubscriptionComponent,
-       EditSubscriptionComponent
+       EditSubscriptionComponent,
+       AllPisteComponent,
+       AddPisteComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,84 @@
+
+<div class="container">
+       <div class="row">
+          <div class="col-sm-12">
+             <div class="iq-card position-relative inner-page-bg bg-primary" style="height: 150px;">
+                <div class="inner-page-title">
+                   <h3 class="text-white">Piste CRUD</h3>
+                   <p class="text-white">gestion station ski</p>
+                </div>
+             </div>
+          </div>
+
+                  <div class="col-sm-12">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">Editable Piste</h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <div id="table" class="table-editable">
+                           
+                              <div class="d-flex justify-content-between my-2 mx-2">
+                                <p>Edite delete remove and  select all on the table of entity name piste in this page.</p>
+                                <button  (click)="onClickOpenClose()"   class="btn btn-primary"><i
+                                    class="ri-add-fill"><span class="pl-1">Add New</span></i>
+                                </button>
+                              </div>
+                              <table class="table table-bordered table-responsive-md table-striped text-center">
+                                 <thead>
+                                    <tr>
+                                       <th>num</th>
+                                       <th>Name</th>
+                                       <th>color</th>
+                                       <th>length</th>
+                                       <th>slope</th>
+                                       <th>Edit</th>
+                                       <th>Remove</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr  *ngFor="let elementPiste of this.pisteService.listPistes">
+                                       <td contenteditable="true">{{elementPiste.numPiste}}</td>
+                                       <td contenteditable="true">{{elementPiste.namePiste}}</td>
+                                       <td contenteditable="true">{{elementPiste.color}}</td>
+                                       <td contenteditable="true">{{elementPiste.length}}</td>
+                                       <td contenteditable="true">{{elementPiste.slope}}</td>
+                                       <td>
+                                          <span class="table-remove">
+                                               <button type="button" class="btn iq-bg-success btn-rounded btn-sm my-0" (click)="onClickUpdatePiste(elementPiste)">Update</button>
+                                          </span>
+                                       </td>
+                                       <td>
+                                          <span class="table-remove">
+                                               <button type="button" class="btn iq-bg-danger btn-rounded btn-sm my-0" (click)="onClickDeletePiste(elementPiste.numPiste)">Remove</button>
+                                          </span>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+       </div>
+    </div>
+
+    <app-add-piste 
+    *ngIf="this.stateAddPisteFormModale" 
+   [state]="this.stateAddPisteFormModale"
+   title="Create"
+   (onClickEvent)="onClickEventOpenCloseAddPisteFormModale($event)"
+   (onPisteEvent)="onPisteEventAdd($event)" >
+   </app-add-piste>
+
+
+   <app-add-piste 
+   *ngIf="this.stateUpdatePisteFormModale" 
+  [state]="this.stateUpdatePisteFormModale"
+  [pisteInput]="this.pisteService.piste"
+  title="Create"
+  (onClickEvent)="onClickEventOpenCloseUpdatePisteFormModale($event)"
+  (onPisteEvent)="onPisteEventUpdate($event)" >
+  </app-add-piste>

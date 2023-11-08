@@ -1,0 +1,29 @@
+i {
+    font-size: 35px;
+    margin-right: 5px;
+    color:#50B5FF;
+  }
+
+p {
+    font-size: 12px ;
+    margin-top: 12.5px;
+    margin-left: 12.5px;
+  }
+h4 {
+    font-size: 20px;
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+
+  /* You can add global styles to this file, and also import other style files */
+.invalid {
+  color:#DC3545;
+  font-size: 12px; 
+}
+.valid {
+  color:#28a745; 
+  font-size: 12px;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
